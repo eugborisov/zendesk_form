@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock@7.0.21,npm/@zendeskgarden/css-utilities@4.3.5,npm/@zendeskgarden/css-buttons,npm/@zendeskgarden/css-forms,npm/@zendeskgarden/css-avatars,npm/@zendeskgarden/css-tables,npm/@zendeskgarden/css-menus,npm/@zendeskgarden/css-modals,npm/@zendeskgarden/css-tags,npm/@zendeskgarden/css-grid,npm/@zendeskgarden/css-callouts">
+	</head>
+	<body>
+		<form style="max-width: 600px; margin: 0 auto;">
+		  <div class="c-txt u-mb-sm">
+		    <label class="c-txt__label" for="2">Subject</label>
+		    <input class="c-txt__input" id="2" type="text">
+		  </div>
+		  <div class="c-txt u-mb-sm">
+		    <label class="c-txt__label" for="3">Message</label>
+		    <input class="c-txt__input" id="3" type="text">
+		  </div>
+		  <div class="u-mb-sm">
+		    <button class="c-btn" type="submit">Submit</button>
+		  </div>
+		</form>
+		<script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$('form').submit(function(event) {
+				event.preventDefault()
+				$.post("https://test-ontec.zendesk.com/api/v2/requests.json", {"request": {"requester": {"name": "Anonymous customer"}, "subject": $('#2').val(), "comment": {"body": $('#3').val() }}}, function() {
+					console.log('success');
+				});
+			});			
+		</script>
+	</body>
+</html>
