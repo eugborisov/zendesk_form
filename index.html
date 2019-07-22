@@ -24,6 +24,8 @@
 				event.preventDefault()
 				$.post("https://test-ontec.zendesk.com/api/v2/requests.json", {"request": {"requester": {"name": "Anonymous customer"}, "subject": $('#2').val(), "comment": {"body": $('#3').val() }}}, function() {
 					console.log('success');
+				}).then(function() {
+					location.reload();
 				});
 			});			
 		</script>
